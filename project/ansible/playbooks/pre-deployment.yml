@@ -1,0 +1,41 @@
+---
+- name: Run pre-tasks
+  hosts: deployment_group
+  pre_tasks:
+    - name: Create website group.
+      group:
+        name: "{{ website_group_name }}"
+        state: present
+    - name: Create website user.
+      user:
+        name: "{{ website_user_name }}"
+        group: "{{ website_group_name }}"
+    - name: Ensure website document root is present.
+      file:
+        path: "{{ website_document_root }}"
+        state: directory
+        owner: "{{ website_user_name }}"
+        group: "{{ website_group_name }}"
+        mode: 0755
+    - name: Ensure package prerequisites are present.
+      package:
+        name: "{{ package_prerequisites|join(',') }}"
+        state: present
+  roles:
+    - geerlingguy.repo-remi
+    - geerlingguy.php
+    - geerlingguy.apache
+    - geerlingguy.git
+    - bertvv.mariadb
+
+- name: Run tasks
+  hosts: deployment_group
+  tasks:
+    - name: Ensure website document root is present.
+      file:
+        path: "{{ website_document_root }}"
+        state: directory
+        owner: "{{ website_user_name }}"
+        group: apache
+        mode: 0755
+...

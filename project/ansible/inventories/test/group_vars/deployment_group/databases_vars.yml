@@ -1,0 +1,9 @@
+---
+mariadb_databases:
+  - name: wordpress
+
+mariadb_users:
+  - name: wordpress
+    password: wppassword
+    priv: 'wordpress.*:ALL'
+...

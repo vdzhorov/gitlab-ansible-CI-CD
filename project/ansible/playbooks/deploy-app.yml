@@ -1,0 +1,6 @@
+---
+- name: Run pre-tasks
+  hosts: deployment_group
+  roles:
+    - ansistrano.deploy
+...

@@ -1,0 +1,6 @@
+---
+website_group_name: websites
+website_user_name: websites
+website_document_root: /var/www/html/
+package_prerequisites:
+  - rsync

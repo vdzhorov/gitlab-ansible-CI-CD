@@ -1,0 +1,7 @@
+---
+- name: Include pre-deployment.yml
+  import_playbook: playbooks/pre-deployment.yml
+
+- name: Run app deployment
+  import_playbook: playbooks/deploy-app.yml
+...

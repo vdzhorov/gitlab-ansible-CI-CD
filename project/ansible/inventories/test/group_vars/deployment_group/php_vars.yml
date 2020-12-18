@@ -1,0 +1,57 @@
+---
+# Pass in a comma-separated list of repos to use (e.g. "remi,epel"). Used only
+# for RHEL/CentOS.
+php_enablerepo: "remi-php73"
+
+# Set to empty list in order to override role defaults. Otherwise a default PHP version will be installed in CentOS 8.
+php_packages: []
+
+# Extra packages to install (in addition to distro-specific default lists).
+php_packages_extra:
+  - php73-php-fpm
+  - php73-php-opcache
+  - php73-php-bcmath
+  - php73-php-ctype
+  - php73-php-curl
+  - php73-php-dom
+  - php73-php-gd
+  - php73-php-hash
+  - php73-php-iconv
+  - php73-php-mbstring
+  - php73-php-openssl
+  - php73-php-pdo
+  - php73-php-mysqlnd
+  - php73-php-xml
+  - php73-php-xmlrpc
+  - php73-php-soap
+  - php73-php-zip
+  - php73-php-cli
+
+# Default PHP version to install on Debian-based OSes.
+php_default_version_debian: "7.3"
+
+# PHP package state; use 'present' to make sure it's installed, or 'latest' if
+# you want to upgrade or switch versions using a new repo.
+php_packages_state: present
+
+# Whether to install recommended packages. Used only for Debian/Ubuntu.
+php_install_recommends: true
+
+# Set this to false if you're not using PHP with Apache/Nginx/etc.
+php_enable_webserver: false
+
+# PHP-FPM configuration.
+php_enable_php_fpm: false
+
+# The executable to run when calling PHP from the command line.
+php_executable: "php73"
+
+# APCu settings.
+php_enable_apc: false
+
+# If this is set to false, none of the following options will have any effect.
+# Any and all changes to /etc/php.ini will be your responsibility.
+php_use_managed_ini: false
+
+php_webserver_daemon: "httpd"
+...

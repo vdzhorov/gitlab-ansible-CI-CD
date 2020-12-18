@@ -1,0 +1,4 @@
+---
+- name: Move project to root
+  shell: "mv {{ website_document_root }}/project//wordpress/* {{ website_document_root }}/"
+...

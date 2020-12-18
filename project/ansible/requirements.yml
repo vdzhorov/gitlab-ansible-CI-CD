@@ -1,0 +1,8 @@
+---
+- name: ansistrano.deploy
+- name: geerlingguy.repo-remi
+- name: geerlingguy.php
+- name: geerlingguy.apache
+- name: geerlingguy.git
+- name: bertvv.mariadb
+...
