@@ -1,0 +1,6 @@
+---
+- name: Install and configure GitLab
+  hosts: gitlab_coordinator
+  roles:
+    - geerlingguy.gitlab
+...

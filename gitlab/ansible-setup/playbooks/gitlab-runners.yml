@@ -1,0 +1,6 @@
+---
+- name: Install and configure GitLab runners
+  hosts: gitlab_runners
+  roles:
+    - riemers.gitlab-runner
+...
