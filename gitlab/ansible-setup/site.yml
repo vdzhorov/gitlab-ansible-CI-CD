@@ -1,0 +1,7 @@
+---
+- name: Include playbooks for GitLab
+  import_playbook: playbooks/gitlab.yml
+
+- name: Include playbooks for GitLab runners
+  import_playbook: playbooks/gitlab-runners.yml
+...
