@@ -4,8 +4,8 @@ A prototype setup for using Gitlab pipelines along with Ansible and ansistrano.d
 
 ## Requirements
 
-python >= 2.7
-ansible >= 2.9
+* python >= 2.7
+* ansible >= 2.9
 
 ## Prerequisites
 
@@ -22,8 +22,8 @@ This project is separated into 2 parts:
 
 ### License
 
-MIT
+**MIT**
 
 ### Author Information
 
-* Valentin Dzhorov
+* **Valentin Dzhorov**
