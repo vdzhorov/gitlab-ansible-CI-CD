@@ -1,4 +1,5 @@
 ---
 - name: geerlingguy.gitlab
+- name: geerlingguy.docker
 - name: riemers.gitlab-runner
 ...
