@@ -1,0 +1,31 @@
+---
+stages:
+  - test
+
+image: alpine
+variables:
+  ANSIBLE_HOST_KEY_CHECKING: 'false'
+  ANSIBLE_FORCE_COLOR: 'true'
+  REMOTE_USER: 'root'
+
+.init_ssh: &init_ssh |
+  eval $(ssh-agent -s)
+  echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  mkdir -p ~/.ssh
+  chmod 700 ~/.ssh
+  [[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+  # Replace the last line with the following lines if you'd rather
+  # leave StrictHostKeyChecking enabled (replace yourdomain.com):
+  #
+  #  ssh-keyscan yourdomain.com >> ~/.ssh/known_hosts
+  #  chmod 644 ~/.ssh/known_hosts
+
+ansible:
+  script:
+    - apk add --no-cache openssh-client
+    - *init_ssh
+    - apk add --no-cache ansible
+    - cd ansible
+    - ansible-galaxy install -r requirements.yml
+    - ansible-playbook site.yml -i inventories/test/hosts.ini
