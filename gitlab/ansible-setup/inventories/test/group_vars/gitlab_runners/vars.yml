@@ -6,10 +6,7 @@ gitlab_runner_runners:
     executor: docker
     docker_image: 'alpine'
     docker_tlsverify: False
-    tags:
-      - node
-      - ruby
-      - mysql
+    tags: []
     docker_volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/cache"
@@ -17,6 +14,7 @@ gitlab_runner_runners:
       runners.docker:
         memory: 512m
         allowed_images: ["ruby:*", "python:*", "php:*"]
+        extra_hosts: ["gitlab:185.55.230.211"]
       runners.docker.sysctls:
         net.ipv4.ip_forward: "1"
 ...
